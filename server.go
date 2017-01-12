@@ -134,7 +134,7 @@ func newServer(listenAddrs []string, notifier chainntnfs.ChainNotifier,
 
 	// If the debug HTLC flag is on, then we invoice a "master debug"
 	// invoice which all outgoing payments will be sent and all incoming
-	// HTLC's with the debug R-Hash immediately settled.
+	// HTLCs with the debug R-Hash immediately settled.
 	if cfg.DebugHTLC {
 		kiloCoin := btcutil.Amount(btcutil.SatoshiPerBitcoin * 1000)
 		s.invoices.AddDebugInvoice(kiloCoin, *debugPre)

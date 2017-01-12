@@ -996,7 +996,7 @@ type ChannelEdge struct {
 	FeeBaseMSat btcutil.Amount
 
 	// FeeProportionalMillionths is the rate that the node will charge for
-	// HTLC's for each millionth of a satoshi forwarded.
+	// HTLCs for each millionth of a satoshi forwarded.
 	FeeProportionalMillionths btcutil.Amount
 
 	// Capacity is the total capacity of the channel, this is determined by

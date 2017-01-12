@@ -33,7 +33,7 @@ var (
 )
 
 const (
-	// MaxPendingPayments is the max number of pending HTLC's permitted on
+	// MaxPendingPayments is the max number of pending HTLCs permitted on
 	// a channel.
 	// TODO(roasbeef): make not random value + enforce
 	//  * should be tuned to account for max tx "cost"
@@ -66,7 +66,7 @@ const (
 	channelClosing
 
 	// channelClosed represents a channel which has been fully closed. Note
-	// that before a channel can be closed, ALL pending HTLC's must be
+	// that before a channel can be closed, ALL pending HTLCs must be
 	// settled/removed.
 	channelClosed
 
@@ -75,7 +75,7 @@ const (
 	channelDispute
 
 	// channelPendingPayment indicates that there a currently outstanding
-	// HTLC's within the channel.
+	// HTLCs within the channel.
 	channelPendingPayment
 )
 
@@ -197,7 +197,7 @@ type commitment struct {
 	ourBalance   btcutil.Amount
 	theirBalance btcutil.Amount
 
-	// htlcs is the set of HTLC's which remain unsettled within this
+	// htlcs is the set of HTLCs which remain unsettled within this
 	// commitment.
 	outgoingHTLCs []*PaymentDescriptor
 	incomingHTLCs []*PaymentDescriptor
@@ -555,7 +555,7 @@ type BreachRetribution struct {
 	// RevokedStateNum is the revoked state number which was broadcast.
 	RevokedStateNum uint64
 
-	// PendingHTLCs is a slice of the HTLC's which were pending at this
+	// PendingHTLCs is a slice of the HTLCs which were pending at this
 	// point within the channel's history transcript.
 	PendingHTLCs []*channeldb.HTLC
 
@@ -759,7 +759,7 @@ func (lc *LightningChannel) closeObserver(channelCloseNtfn *chainntnfs.SpendEven
 	}
 }
 
-// restoreStateLogs runs through the current locked-in HTLC's from the point of
+// restoreStateLogs runs through the current locked-in HTLCs from the point of
 // view of the channel and insert corresponding log entries (both local and
 // remote) for each HTLC read from disk. This method is required sync the
 // in-memory state of the state machine with that read from persistent storage.
@@ -807,7 +807,7 @@ func (lc *LightningChannel) restoreStateLogs() error {
 	return nil
 }
 
-// htlcView represents the "active" HTLC's at a particular point within the
+// htlcView represents the "active" HTLCs at a particular point within the
 // history of the HTLC update log.
 type htlcView struct {
 	ourUpdates   []*PaymentDescriptor
@@ -877,7 +877,7 @@ func (lc *LightningChannel) fetchCommitmentView(remoteChain bool,
 
 	nextHeight := commitChain.tip().height + 1
 
-	// Run through all the HTLC's that will be covered by this transaction
+	// Run through all the HTLCs that will be covered by this transaction
 	// in order to update their commitment addition height, and to adjust
 	// the balances on the commitment transaction accordingly.
 	// TODO(roasbeef): error if log empty?
@@ -906,7 +906,7 @@ func (lc *LightningChannel) fetchCommitmentView(remoteChain bool,
 	}
 
 	// Generate a new commitment transaction with all the latest
-	// unsettled/un-timed out HTLC's.
+	// unsettled/un-timed out HTLCs.
 	ourCommitTx := !remoteChain
 	commitTx, err := CreateCommitTx(lc.fundingTxIn, selfKey, remoteKey,
 		revocationKey, delay, delayBalance, p2wkhBalance)
@@ -965,7 +965,7 @@ func (lc *LightningChannel) fetchCommitmentView(remoteChain bool,
 // evaluateHTLCView processes all update entries in both HTLC update logs,
 // producing a final view which is the result of properly applying all adds,
 // settles, and timeouts found in both logs. The resulting view returned
-// reflects the current state of htlc's within the remote or local commitment
+// reflects the current state of HTLCs within the remote or local commitment
 // chain.
 func (lc *LightningChannel) evaluateHTLCView(view *htlcView, ourBalance,
 	theirBalance *btcutil.Amount, nextHeight uint64, remoteChain bool) *htlcView {
@@ -1012,8 +1012,8 @@ func (lc *LightningChannel) evaluateHTLCView(view *htlcView, ourBalance,
 	}
 
 	// Next we take a second pass through all the log entries, skipping any
-	// settled HTLC's, and debiting the chain state balance due to any
-	// newly added HTLC's.
+	// settled HTLCs, and debiting the chain state balance due to any
+	// newly added HTLCs.
 	for _, entry := range view.ourUpdates {
 		isAdd := entry.EntryType == Add
 		if _, ok := skipUs[entry.Index]; !isAdd || ok {
@@ -1110,7 +1110,7 @@ func processRemoveEntry(htlc *PaymentDescriptor, ourBalance,
 	// the value of the HTLC.
 	case !isIncoming && htlc.EntryType == Settle:
 		*theirBalance += htlc.Amount
-	// Otherwise, one of our outgoing HTLC's has been cancelled, so the
+	// Otherwise, one of our outgoing HTLCs has been cancelled, so the
 	// value of the HTLC should be returned to our settled balance.
 	case !isIncoming && htlc.EntryType == Cancel:
 		*ourBalance += htlc.Amount
@@ -1151,7 +1151,7 @@ func (lc *LightningChannel) SignNextCommitment() ([]byte, uint32, error) {
 
 	// Create a new commitment view which will calculate the evaluated
 	// state of the remote node's new commitment including our latest added
-	// HTLC's. The view includes the latest balances for both sides on the
+	// HTLCs. The view includes the latest balances for both sides on the
 	// remote node's chain, and also update the addition height of any new
 	// HTLC log entries.
 	newCommitView, err := lc.fetchCommitmentView(true, lc.ourLogCounter,
@@ -1205,7 +1205,7 @@ func (lc *LightningChannel) validateCommitmentSanity(theirLogCounter,
 		htlcCount++
 	}
 
-	// Run through all the HTLC's that will be covered by this transaction
+	// Run through all the HTLCs that will be covered by this transaction
 	// in order to calculate theirs count.
 	htlcView := lc.fetchHTLCView(theirLogCounter, ourLogCounter)
 
@@ -1292,7 +1292,7 @@ func (lc *LightningChannel) ReceiveNewCommitment(rawSig []byte,
 	sigHash, err := txscript.CalcWitnessSigHash(multiSigScript, hashCache,
 		txscript.SigHashAll, localCommitTx, 0, int64(lc.channelState.Capacity))
 	if err != nil {
-		// TODO(roasbeef): fetchview has already mutated the htlc's...
+		// TODO(roasbeef): fetchview has already mutated the HTLCs...
 		//  * need to either roll-back, or make pure
 		return err
 	}
@@ -1395,7 +1395,7 @@ func (lc *LightningChannel) RevokeCurrentCommitment() (*lnwire.CommitRevocation,
 // windows are extended, or in response to a state update that we initiate. If
 // successful, then the remote commitment chain is advanced by a single
 // commitment, and a log compaction is attempted. In addition, a slice of
-// HTLC's which can be forwarded upstream are returned.
+// HTLCs which can be forwarded upstream are returned.
 func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) ([]*PaymentDescriptor, error) {
 	lc.Lock()
 	defer lc.Unlock()
@@ -1428,7 +1428,7 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 	}
 
 	// Additionally, we need to ensure we were given the proper pre-image
-	// to the revocation hash used within any current HTLC's.
+	// to the revocation hash used within any current HTLCs.
 	if !bytes.Equal(lc.channelState.TheirCurrentRevocationHash[:], zeroHash[:]) {
 		revokeHash := fastsha256.Sum256(pendingRevocation[:])
 		// TODO(roasbeef): rename to drop the "Their"
@@ -1483,7 +1483,7 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 			continue
 		}
 
-		// TODO(roasbeef): re-visit after adding persistence to HTLC's
+		// TODO(roasbeef): re-visit after adding persistence to HTLCs
 		//  * either record add height, or set to N - 1
 		uncomitted := (htlc.addCommitHeightRemote == 0 ||
 			htlc.addCommitHeightLocal == 0)
@@ -1510,9 +1510,9 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 	return htlcsToForward, nil
 }
 
-// compactLogs performs garbage collection within the log removing HTLC's which
+// compactLogs performs garbage collection within the log removing HTLCs which
 // have been removed from the point-of-view of the tail of both chains. The
-// entries which timeout/settle HTLC's are also removed.
+// entries which timeout/settle HTLCs are also removed.
 func (lc *LightningChannel) compactLogs(ourLog, theirLog *list.List,
 	localChainTail, remoteChainTail uint64) {
 

@@ -307,7 +307,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 			return
 		}
 
-		// TODO(roasbeef): factor in HTLC's
+		// TODO(roasbeef): factor in HTLCs
 		revokedFunds := breachInfo.revokedOutput.amt
 		totalFunds := revokedFunds + breachInfo.selfOutput.amt
 
@@ -361,7 +361,7 @@ func (b *breachArbiter) breachObserver(contract *lnwallet.LightningChannel,
 
 		// Immediately notify the HTLC switch that this link has been
 		// breached in order to ensure any incoming or outgoing
-		// multi-hop HTLC's aren't sent over this link, nor any other
+		// multi-hop HTLCs aren't sent over this link, nor any other
 		// links associated with this peer.
 		b.htlcSwitch.CloseLink(chanPoint, CloseBreach)
 		if err := contract.DeleteState(); err != nil {
@@ -495,9 +495,9 @@ func (b *breachArbiter) createJusticeTx(r *retributionInfo) (*wire.MsgTx, error)
 
 	// Finally, using the witness generation functions attached to the
 	// retribution information, we'll populate the inputs with fully valid
-	// witnesses for both commitment outputs, and all the pending HTLC's at
+	// witnesses for both commitment outputs, and all the pending HTLCs at
 	// this state in the channel's history.
-	// TODO(roasbeef): handle the 2-layer HTLC's
+	// TODO(roasbeef): handle the 2-layer HTLCs
 	localWitness, err := r.selfOutput.witnessFunc(justiceTx, hashCache, 0)
 	if err != nil {
 		return nil, err

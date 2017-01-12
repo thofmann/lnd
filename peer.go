@@ -949,10 +949,10 @@ type pendingPayment struct {
 // save meta-state required for proper functioning.
 type commitmentState struct {
 	// htlcsToSettle is a list of preimages which allow us to settle one or
-	// many of the pending HTLC's we've received from the upstream peer.
+	// many of the pending HTLCs we've received from the upstream peer.
 	htlcsToSettle map[uint32]*channeldb.Invoice
 
-	// htlcsToCancel is a set of HTLC's identified by their log index which
+	// htlcsToCancel is a set of HTLCs identified by their log index which
 	// are to be cancelled upon the next state transition.
 	htlcsToCancel map[uint32]lnwire.CancelReason
 
@@ -965,7 +965,7 @@ type commitmentState struct {
 	// TODO(roasbeef): use once trickle+batch logic is in
 	pendingBatch []*pendingPayment
 
-	// clearedHTCLs is a map of outgoing HTLC's we've committed to in our
+	// clearedHTCLs is a map of outgoing HTLCs we've committed to in our
 	// chain which have not yet been settled by the upstream peer.
 	clearedHTCLs map[uint32]*pendingPayment
 
@@ -989,7 +989,7 @@ type commitmentState struct {
 	// within HTLC add messages.
 	sphinx *sphinx.Router
 
-	// pendingCircuits tracks the remote log index of the incoming HTLC's,
+	// pendingCircuits tracks the remote log index of the incoming HTLCs,
 	// mapped to the processed Sphinx packet contained within the HTLC.
 	// This map is used as a staging area between when an HTLC is added to
 	// the log, and when it's locked into the commitment state of both
@@ -1007,7 +1007,7 @@ type commitmentState struct {
 // from several possible downstream channels managed by the htlcSwitch. In the
 // event that an htlc needs to be forwarded, then send-only htlcPlex chan is
 // used which sends htlc packets to the switch for forwarding. Additionally,
-// the htlcManager handles acting upon all timeouts for any active HTLC's,
+// the htlcManager handles acting upon all timeouts for any active HTLCs,
 // manages the channel's revocation window, and also the htlc trickle
 // queue+timer for this active channels.
 func (p *peer) htlcManager(channel *lnwallet.LightningChannel,
@@ -1044,7 +1044,7 @@ func (p *peer) htlcManager(channel *lnwallet.LightningChannel,
 	}
 
 	// TODO(roasbeef): check to see if able to settle any currently pending
-	// HTLC's
+	// HTLCs
 	//   * also need signals when new invoices are added by the invoiceRegistry
 
 	batchTimer := time.Tick(10 * time.Millisecond)
@@ -1131,8 +1131,8 @@ out:
 
 // handleDownStreamPkt processes an HTLC packet sent from the downstream HTLC
 // Switch. Possible messages sent by the switch include requests to forward new
-// HTLC's, timeout previously cleared HTLC's, and finally to settle currently
-// cleared HTLC's with the upstream peer.
+// HTLCs, timeout previously cleared HTLCs, and finally to settle currently
+// cleared HTLCs with the upstream peer.
 func (p *peer) handleDownStreamPkt(state *commitmentState, pkt *htlcPacket) {
 	var isSettle bool
 	switch htlc := pkt.msg.(type) {
@@ -1215,7 +1215,7 @@ func (p *peer) handleDownStreamPkt(state *commitmentState, pkt *htlcPacket) {
 
 	// If this newly added update exceeds the max batch size for adds, or
 	// this is a settle request, then initiate an update.
-	// TODO(roasbeef): enforce max HTLC's in flight limit
+	// TODO(roasbeef): enforce max HTLCs in flight limit
 	if len(state.pendingBatch) >= 10 || isSettle {
 		if sent, err := p.updateCommitTx(state); err != nil {
 			peerLog.Errorf("unable to update "+
@@ -1386,7 +1386,7 @@ func (p *peer) handleUpstreamMsg(state *commitmentState, msg lnwire.Message) {
 			return
 		}
 
-		// If any of the htlc's eligible for forwarding are pending
+		// If any of the HTLCs eligible for forwarding are pending
 		// settling or timing out previous outgoing payments, then we
 		// can them from the pending set, and signal the requester (if
 		// existing) that the payment has been fully fulfilled.
@@ -1475,7 +1475,7 @@ func (p *peer) handleUpstreamMsg(state *commitmentState, msg lnwire.Message) {
 
 		go func() {
 			for _, htlc := range htlcsToForward {
-				// We don't need to forward any HTLC's that we
+				// We don't need to forward any HTLCs that we
 				// just settled or cancelled above.
 				// TODO(roasbeef): key by index instead?
 				if _, ok := settledPayments[htlc.RHash]; ok {
@@ -1567,7 +1567,7 @@ func (p *peer) updateCommitTx(state *commitmentState) (bool, error) {
 	}
 	p.queueMsg(commitSig, nil)
 
-	// Move all pending updates to the map of cleared HTLC's, clearing out
+	// Move all pending updates to the map of cleared HTLCs, clearing out
 	// the set of pending updates.
 	for _, update := range state.pendingBatch {
 		// TODO(roasbeef): add parsed next-hop info to pending batch

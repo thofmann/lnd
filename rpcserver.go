@@ -862,7 +862,7 @@ func (r *rpcServer) SendPayment(paymentStream lnrpc.Lightning_SendPaymentServer)
 
 			}
 			// If we're in debug HTLC mode, then all outgoing
-			// HTLC's will pay to the same debug rHash. Otherwise,
+			// HTLCs will pay to the same debug rHash. Otherwise,
 			// we pay to the rHash specified within the RPC
 			// request.
 			var rHash [32]byte
@@ -943,7 +943,7 @@ func (r *rpcServer) SendPaymentSync(ctx context.Context,
 		// Otherwise, the payment conditions have been manually specified in
 		// the proto.
 	} else {
-		// If we're in debug HTLC mode, then all outgoing HTLC's will pay to
+		// If we're in debug HTLC mode, then all outgoing HTLCs will pay to
 		// the same debug rHash. Otherwise, we pay to the rHash specified
 		// within the RPC request.
 		if cfg.DebugHTLC && nextPayment.PaymentHashString == "" {

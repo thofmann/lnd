@@ -55,7 +55,7 @@ func newInvoiceRegistry(cdb *channeldb.DB) *invoiceRegistry {
 
 // addDebugInvoice adds a debug invoice for the specified amount, identified
 // by the passed preimage. Once this invoice is added, sub-systems within the
-// daemon add/forward HTLC's are able to obtain the proper preimage required
+// daemon add/forward HTLCs are able to obtain the proper preimage required
 // for redemption in the case that we're the final destination.
 func (i *invoiceRegistry) AddDebugInvoice(amt btcutil.Amount, preimage chainhash.Hash) {
 	paymentHash := chainhash.Hash(fastsha256.Sum256(preimage[:]))
@@ -80,7 +80,7 @@ func (i *invoiceRegistry) AddDebugInvoice(amt btcutil.Amount, preimage chainhash
 // AddInvoice adds a regular invoice for the specified amount, identified by
 // the passed preimage. Additionally, any memo or recipt data provided will
 // also be stored on-disk. Once this invoice is added, sub-systems within the
-// daemon add/forward HTLC's are able to obtain the proper preimage required
+// daemon add/forward HTLCs are able to obtain the proper preimage required
 // for redemption in the case that we're the final destination.
 func (i *invoiceRegistry) AddInvoice(invoice *channeldb.Invoice) error {
 	ltndLog.Debugf("Adding invoice %v", newLogClosure(func() string {

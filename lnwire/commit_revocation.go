@@ -42,7 +42,7 @@ type CommitRevocation struct {
 
 	// NextRevocationHash is the next revocation hash which should be added
 	// to the queue on unused revocation hashes for the remote peer. This
-	// revocation hash will be used within any HTLC's included within this
+	// revocation hash will be used within any HTLCs included within this
 	// next commitment transaction.
 	NextRevocationHash [32]byte
 }

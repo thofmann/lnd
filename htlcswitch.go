@@ -26,11 +26,11 @@ const (
 	htlcQueueSize = 50
 )
 
-// link represents a an active channel capable of forwarding HTLC's. Each
+// link represents a an active channel capable of forwarding HTLCs. Each
 // active channel registered with the htlc switch creates a new link which will
-// be used for forwarding outgoing HTLC's. The link also has additional
+// be used for forwarding outgoing HTLCs. The link also has additional
 // meta-data such as the current available bandwidth of the link (in satoshis)
-// which aide the switch in optimally forwarding HTLC's.
+// which aide the switch in optimally forwarding HTLCs.
 type link struct {
 	capacity btcutil.Amount
 
@@ -75,7 +75,7 @@ type circuitKey [32]byte
 // link forwards an HTLC add request which initiates the creation of the
 // circuit.  The onion routing information contained within this message is
 // used to identify the settle/clear ends of the circuit. A circuit may be
-// re-used (not torndown) in the case that multiple HTLC's with the send RHash
+// re-used (not torndown) in the case that multiple HTLCs with the send RHash
 // are sent.
 type paymentCircuit struct {
 	// TODO(roasbeef): add reference count so know when to delete?
@@ -99,14 +99,14 @@ type paymentCircuit struct {
 	settle *link
 }
 
-// htlcSwitch is a central messaging bus for all incoming/outgoing HTLC's.
+// htlcSwitch is a central messaging bus for all incoming/outgoing HTLCs.
 // Connected peers with active channels are treated as named interfaces which
 // refer to active channels as links. A link is the switch's message
 // communication point with the goroutine that manages an active channel. New
 // links are registered each time a channel is created, and unregistered once
 // the channel is closed. The switch manages the hand-off process for multi-hop
-// HTLC's, forwarding HTLC's initiated from within the daemon, and additionally
-// splitting up incoming/outgoing HTLC's to a particular interface amongst many
+// HTLCs, forwarding HTLCs initiated from within the daemon, and additionally
+// splitting up incoming/outgoing HTLCs to a particular interface amongst many
 // links (payment fragmentation).
 // TODO(roasbeef): active sphinx circuits need to be synced to disk
 type htlcSwitch struct {
@@ -215,7 +215,7 @@ func (h *htlcSwitch) SendHTLC(htlcPkt *htlcPacket) error {
 }
 
 // htlcForwarder is responsible for optimally forwarding (and possibly
-// fragmenting) incoming/outgoing HTLC's amongst all active interfaces and
+// fragmenting) incoming/outgoing HTLCs amongst all active interfaces and
 // their links. The duties of the forwarder are similar to that of a network
 // switch, in that it facilitates multi-hop payments by acting as a central
 // messaging bus. The switch communicates will active links to create, manage,
@@ -615,7 +615,7 @@ func (h *htlcSwitch) handleUnregisterLink(req *unregisterLinkMsg) {
 
 		// Delete the peer from the onion index so that the
 		// htlcForwarder knows not attempt to forward any further
-		// HTLC's in this direction.
+		// HTLCs in this direction.
 		var onionId [ripemd160.Size]byte
 		copy(onionId[:], btcutil.Hash160(req.remoteID))
 		delete(h.onionIndex, onionId)
@@ -710,7 +710,7 @@ type unregisterLinkMsg struct {
 
 // UnregisterLink requets the htlcSwitch to register the new active link. An
 // unregistered link will no longer be considered a candidate to forward
-// HTLC's.
+// HTLCs.
 func (h *htlcSwitch) UnregisterLink(remotePub *btcec.PublicKey, chanPoint *wire.OutPoint) {
 	done := make(chan struct{}, 1)
 	rawPub := remotePub.SerializeCompressed()
