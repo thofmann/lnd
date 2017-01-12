@@ -139,7 +139,7 @@ code works correctly when it is fed correct data as well as incorrect data
 
 
 Go provides an excellent test framework that makes writing test code and
-checking coverage statistics straight forward.  For more information about the
+checking coverage statistics straightforward.  For more information about the
 test coverage tools, see the [golang cover blog post](http://blog.golang.org/cover).
 
 A quick summary of test practices follows:
@@ -150,7 +150,7 @@ A quick summary of test practices follows:
   to both prove it has been resolved and to prevent future regressions
 - Changes to publicly exported packages such as
   [brontide](https://github.com/lightningnetwork/lnd/tree/master/brontide) should
-  be accompanied by unittest excersising the new or changed behavior.
+  be accompanied by unit tests excersising the new or changed behavior.
 - Changes to behavior within the daemon's interaction with the P2P protocol,
   or RPC's will need to be accompanied by integration tests which use the
   [`networkHarness`framework](https://github.com/lightningnetwork/lnd/blob/master/networktest.go)
