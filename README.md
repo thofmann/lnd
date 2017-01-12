@@ -51,7 +51,7 @@ said, `lnd` the current status of `lnd`'s BOLT compliance is:
 
 ## Installation
 
-* In order to build form source, the following build dependencies are required:
+* In order to build from source, the following build dependencies are required:
   * **Go 1.5 or 1.6**
 
     Installation instructions can be found here: http://golang.org/doc/install.
