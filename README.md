@@ -10,7 +10,7 @@ Network](https://lightning.network). `lnd` is currently deployed on the Bitcoin 
 Network (testnet4) and utilizes an upcoming upgrade to Bitcoin: Segregated
 Witness. The project's codebase uses the
 [btcsuite](https://github.com/btcsuite/) set of Bitcoin libraries, and is
-currently dependant on [btcd](https://github.com/btcsuite/btcd).
+currently dependent on [btcd](https://github.com/btcsuite/btcd).
 
 The Lightning Network Daemon (`lnd`) is capable of: creating channels, closing
 channels, completely managing all channel states (including the exceptional

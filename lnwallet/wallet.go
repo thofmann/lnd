@@ -241,10 +241,10 @@ type channelOpenMsg struct {
 // as a regular Bitcoin wallet which uses HD keys. The wallet is highly concurrent
 // internally. All communication, and requests towards the wallet are
 // dispatched as messages over channels, ensuring thread safety across all
-// operations. Interaction has been designed independant of any peer-to-peer
+// operations. Interaction has been designed independent of any peer-to-peer
 // communication protocol, allowing the wallet to be self-contained and embeddable
 // within future projects interacting with the Lightning Network.
-// NOTE: At the moment the wallet requires a btcd full node, as it's dependant
+// NOTE: At the moment the wallet requires a btcd full node, as it's dependent
 // on btcd's websockets notifications as even triggers during the lifetime of
 // a channel. However, once the chainntnfs package is complete, the wallet
 // will be compatible with multiple RPC/notification services such as Electrum,

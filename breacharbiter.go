@@ -60,7 +60,7 @@ type breachArbiter struct {
 }
 
 // newBreachArbiter creates a new instance of a breachArbiter initialize with
-// its dependant objects.
+// its dependent objects.
 func newBreachArbiter(wallet *lnwallet.LightningWallet, db *channeldb.DB,
 	notifier chainntnfs.ChainNotifier, h *htlcSwitch) *breachArbiter {
 
