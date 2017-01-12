@@ -26,7 +26,7 @@ threat-modeling, and RPC systems. They also represent a radical shift to the
 current fiscal system and as a result provide an opportunity to help reshape
 the entire financial system. With the advent of the [Lightning Network
 (LN)](https://lightning.network/), new layers are being constructed upon the
-base blockchain layer which have the potential to aleviate many of the
+base blockchain layer which have the potential to alleviate many of the
 limitations and constraints inherent in the design of blockchains. There are
 few projects that offer this level of diversity and impact all in one code
 base. 
