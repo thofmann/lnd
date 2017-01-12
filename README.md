@@ -6,7 +6,7 @@
 
 
 `lnd` is a complete implementation of a node on the [Lightning
-Network](lightning.network). `lnd` is currently deployed on the Bitcoin Test
+Network](https://lightning.network). `lnd` is currently deployed on the Bitcoin Test
 Network (testnet4) and utilizes an upcoming upgrade to Bitcoin: Segregated
 Witness. The project's codebase uses the
 [btcsuite](https://github.com/btcsuite/) set of Bitcoin libraries, and is
