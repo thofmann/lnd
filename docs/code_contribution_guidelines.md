@@ -7,11 +7,11 @@
 4.2. [Testing](#Testing)<br />
 4.3. [Code Documentation and Commenting](#CodeDocumentation)<br />
 4.4. [Model Git Commit Messages](#ModelGitCommitMessages)<br />
-4.5  [Code Spacing](#CodeSpacing)<br />
+4.5. [Code Spacing](#CodeSpacing)<br />
 5. [Code Approval Process](#CodeApproval)<br />
-5.1 [Code Review](#CodeReview)<br />
-5.2 [Rework Code (if needed)](#CodeRework)<br />
-5.3 [Acceptance](#CodeAcceptance)<br />
+5.1. [Code Review](#CodeReview)<br />
+5.2. [Rework Code (if needed)](#CodeRework)<br />
+5.3. [Acceptance](#CodeAcceptance)<br />
 6. [Contribution Standards](#Standards)<br />
 6.1. [Contribution Checklist](#Checklist)<br />
 6.2. [Licensing of Contributions](#Licensing)<br />
@@ -103,7 +103,7 @@ they feel their feature or bug fix is ready for integration into the  master
 branch.
 
 <a name="ShareEarly" />
-### 4.1 Share Early, Share Often
+### 4.1. Share Early, Share Often
 
 We firmly believe in the share early, share often approach.  The basic premise
 of the approach is to announce your plans **before** you start work, and once
@@ -123,7 +123,7 @@ This approach has several benefits:
   spend rebasing and otherwise trying to keep up with the main code base
 
 <a name="Testing" />
-### 4.2 Testing
+### 4.2. Testing
 
 One of the major design goals of all of lnd's packages and the daemon itself is
 to aim for a high degree of test coverage.  This is financial software so bugs
@@ -158,7 +158,7 @@ A quick summary of test practices follows:
   [`lnd_test.go`](https://github.com/lightningnetwork/lnd/blob/master/lnd_test.go#L181). 
 
 <a name="CodeDocumentation" />
-### 4.3 Code Documentation and Commenting
+### 4.3. Code Documentation and Commenting
 
 - At a minimum every function must be commented with its intended purpose and
   any assumptions that it makes
@@ -225,7 +225,7 @@ but it was left as a magic number to show how much of a difference a good
 comment can make.
 
 <a name="ModelGitCommitMessages" />
-### 4.4 Model Git Commit Messages
+### 4.4. Model Git Commit Messages
 
 This project prefers to keep a clean commit history with well-formed commit
 messages.  This section illustrates a model commit message and provides a bit
@@ -280,7 +280,7 @@ determining the scope of a commit at a glance, or when bug hunting to find a
 commit which introduced a bug or regression. 
 
 <a name="CodeSpacing" />
-### 4.5 Code Spacing 
+### 4.5. Code Spacing 
 
 Blocks of code within lnd should be segmented into logical stanzas of
 operation. Such spacing makes the code easier to follow at a skim, and reduces
@@ -335,7 +335,7 @@ This section describes the code approval process that is used for code
 contributions.  This is how to get your changes into lnd.
 
 <a name="CodeReview" />
-### 5.1 Code Review
+### 5.1. Code Review
 
 All code which is submitted will need to be reviewed before inclusion into the
 master branch.  This process is performed by the project maintainers and usually
@@ -370,7 +370,7 @@ checks which are generally performed as follows:
   consensus
 
 <a name="CodeRework" />
-### 5.2 Rework Code (if needed)
+### 5.2. Rework Code (if needed)
 
 After the code review, the change will be accepted immediately if no issues are
 found.  If there are any concerns or questions, you will be provided with
@@ -382,7 +382,7 @@ make the necessary changes.
 This process will continue until the code is finally accepted.
 
 <a name="CodeAcceptance" />
-### 5.3 Acceptance
+### 5.3. Acceptance
 
 Once your code is accepted, it will be integrated with the master branch.
 Typically it will be rebased and fast-forward merged to master as we prefer to
