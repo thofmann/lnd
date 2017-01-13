@@ -518,7 +518,7 @@ func (f *fundingManager) processFundingComplete(msg *lnwire.SingleFundingComplet
 func (f *fundingManager) handleFundingComplete(fmsg *fundingCompleteMsg) {
 	resCtx, err := f.getReservationCtx(fmsg.peer.id, fmsg.msg.ChannelID)
 	if err != nil {
-		fndgLog.Warnf("can' find reservation (peerID:%v, chanID:%v)",
+		fndgLog.Warnf("can't find reservation (peerID:%v, chanID:%v)",
 			fmsg.peer.id, fmsg.msg.ChannelID)
 		return
 	}
@@ -687,7 +687,7 @@ func (f *fundingManager) handleFundingSignComplete(fmsg *fundingSignCompleteMsg)
 
 	resCtx, err := f.getReservationCtx(peerID, chanID)
 	if err != nil {
-		fndgLog.Warnf("can' find reservation (peerID:%v, chanID:%v)",
+		fndgLog.Warnf("can't find reservation (peerID:%v, chanID:%v)",
 			peerID, chanID)
 		return
 	}
@@ -821,7 +821,7 @@ func (f *fundingManager) handleFundingOpen(fmsg *fundingOpenMsg) {
 
 	resCtx, err := f.getReservationCtx(peerID, chanID)
 	if err != nil {
-		fndgLog.Warnf("can' find reservation (peerID:%v, chanID:%v)",
+		fndgLog.Warnf("can't find reservation (peerID:%v, chanID:%v)",
 			peerID, chanID)
 		return
 	}
