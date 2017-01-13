@@ -16,11 +16,11 @@ import (
 
 // breachArbiter is a special subsystem which is responsible for watching and
 // acting on the detection of any attempted uncooperative channel breaches by
-// channel counter-parties. This file essentially acts as deterrence code for
+// channel counterparties. This file essentially acts as deterrence code for
 // those attempting to launch attacks against the daemon. In practice it's
 // expected that the logic in this file never gets executed, but it is
 // important to have it in place just in case we encounter cheating channel
-// counter-parties.
+// counterparties.
 // TODO(roasbeef): closures in config for subsystem pointers to decouple?
 type breachArbiter struct {
 	wallet     *lnwallet.LightningWallet

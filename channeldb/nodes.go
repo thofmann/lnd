@@ -25,7 +25,7 @@ var (
 // struct and the bucket its stored within have store data similar to that of
 // Bitcion's addrmanager. The TCP address information stored within the struct
 // can be used to establish persistent connections will all channel
-// counter-parties on daemon startup.
+// counterparties on daemon startup.
 //
 // TODO(roasbeef): also add current OnionKey plus rotation schedule?
 // TODO(roasbeef): add bitfield for supported services
