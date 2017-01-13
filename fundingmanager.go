@@ -709,7 +709,7 @@ func (f *fundingManager) handleFundingSignComplete(fmsg *fundingSignCompleteMsg)
 
 	// Send an update to the upstream client that the negotiation process
 	// is over.
-	// TODO(roasbeef): add abstraction over updates to accomdate
+	// TODO(roasbeef): add abstraction over updates to accommodate
 	// long-polling, or SSE, etc.
 	resCtx.updates <- &lnrpc.OpenStatusUpdate{
 		Update: &lnrpc.OpenStatusUpdate_ChanPending{
