@@ -829,7 +829,7 @@ func (f *fundingManager) handleFundingOpen(fmsg *fundingOpenMsg) {
 	// The channel initiator has claimed the channel is now open, so we'll
 	// verify the contained SPV proof for validity.
 	// TODO(roasbeef): send off to the spv proof verifier, in the routing
-	// sub-module.
+	// submodule.
 
 	// Now that we've verified the initiator's proof, we'll commit the
 	// channel state to disk, and notify the source peer of a newly opened
