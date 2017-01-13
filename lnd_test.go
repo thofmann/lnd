@@ -49,7 +49,7 @@ func newHarnessTest(t *testing.T) *harnessTest {
 	return &harnessTest{t, nil}
 }
 
-// Fatalf causes the current active test-case to fail with a fatal error. All
+// Fatalf causes the current active test case to fail with a fatal error. All
 // integration tests should mark test failures soley with this method due to
 // the error stack traces it produces.
 func (h *harnessTest) Fatalf(format string, a ...interface{}) {
@@ -63,7 +63,7 @@ func (h *harnessTest) Fatalf(format string, a ...interface{}) {
 	}
 }
 
-// RunTestCase executes a harness test-case. Any errors or panics will be
+// RunTestCase executes a harness test case. Any errors or panics will be
 // represented as fatal.
 func (h *harnessTest) RunTestCase(testCase *testCase, net *networkHarness) {
 	h.testCase = testCase
