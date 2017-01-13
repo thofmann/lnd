@@ -614,7 +614,7 @@ func (h *htlcSwitch) handleUnregisterLink(req *unregisterLinkMsg) {
 			hex.EncodeToString(chanInterface[:]))
 
 		// Delete the peer from the onion index so that the
-		// htlcForwarder knows not attempt to forward any further
+		// htlcForwarder knows not to attempt to forward any further
 		// HTLCs in this direction.
 		var onionId [ripemd160.Size]byte
 		copy(onionId[:], btcutil.Hash160(req.remoteID))
