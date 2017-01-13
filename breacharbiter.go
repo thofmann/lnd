@@ -471,7 +471,7 @@ func (b *breachArbiter) createJusticeTx(r *retributionInfo) (*wire.MsgTx, error)
 		return nil, err
 	}
 
-	// Before creating the actual TxOut, we'll need to calculate proper fee
+	// Before creating the actual TxOut, we'll need to calculate the proper fee
 	// to attach to the transaction to ensure a timely confirmation.
 	// TODO(roasbeef): remove hard-coded fee
 	totalAmt := r.selfOutput.amt + r.revokedOutput.amt
