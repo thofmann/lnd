@@ -725,7 +725,7 @@ func (h *htlcSwitch) UnregisterLink(remotePub *btcec.PublicKey, chanPoint *wire.
 	<-done
 }
 
-// LinkCloseType is a enum which signals the type of channel closure the switch
+// LinkCloseType is an enum which signals the type of channel closure the switch
 // should execute.
 type LinkCloseType uint8
 
