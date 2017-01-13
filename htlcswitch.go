@@ -488,7 +488,7 @@ out:
 }
 
 // networkAdmin is responsible for handling requests to register, unregister,
-// and close any link. In the event that a unregister requests leaves an
+// and close any link. In the event that an unregister request leaves an
 // interface with no active links, that interface is garbage collected.
 func (h *htlcSwitch) networkAdmin() {
 out:
