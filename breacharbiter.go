@@ -250,7 +250,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 
 	defer b.wg.Done()
 
-	// TODO(roasbeef): state needs to be check-pointed here
+	// TODO(roasbeef): state needs to be checkpointed here
 
 	select {
 	case _, ok := <-confChan.Confirmed:
