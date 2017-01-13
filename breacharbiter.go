@@ -33,7 +33,7 @@ type breachArbiter struct {
 	// funding outpoint of the channel, and the value is a channel which
 	// will be closed once we detect that the channel has been
 	// cooperatively closed, thereby killing the goroutine and freeing up
-	// resource.
+	// resources.
 	breachObservers map[wire.OutPoint]chan struct{}
 
 	// breachedContracts is a channel which is used internally within the
