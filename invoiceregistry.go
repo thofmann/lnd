@@ -35,7 +35,7 @@ type invoiceRegistry struct {
 	nextClientID        uint32
 	notificationClients map[uint32]*invoiceSubscription
 
-	// debugInvoices is a mp which stores special "debug" invoices which
+	// debugInvoices is a map which stores special "debug" invoices which
 	// should be only created/used when manual tests require an invoice
 	// that *all* nodes are able to fully settle.
 	debugInvoices map[chainhash.Hash]*channeldb.Invoice
@@ -43,7 +43,7 @@ type invoiceRegistry struct {
 
 // newInvoiceRegistry creates a new invoice registry. The invoice registry
 // wraps the persistent on-disk invoice storage with an additional in-memory
-// layer. The in-memory layer is in pace such that debug invoices can be added
+// layer. The in-memory layer is in place such that debug invoices can be added
 // which are volatile yet available system wide within the daemon.
 func newInvoiceRegistry(cdb *channeldb.DB) *invoiceRegistry {
 	return &invoiceRegistry{
