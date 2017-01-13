@@ -429,7 +429,7 @@ func (b *breachArbiter) breachObserver(contract *lnwallet.LightningChannel,
 }
 
 // breachedOutput contains all the information needed to sweep a breached
-// output. A breach output is an output that we're now entitled to due to a
+// output. A breached output is an output that we are now entitled to due to a
 // revoked commitment transaction being broadcast.
 type breachedOutput struct {
 	amt         btcutil.Amount
