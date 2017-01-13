@@ -655,7 +655,7 @@ func (h *htlcSwitch) handleCloseLink(req *closeLinkReq) {
 }
 
 // handleLinkUpdate processes the link info update message by adjusting the
-// channels available bandwidth by the delta specified within the message.
+// channel's available bandwidth by the delta specified within the message.
 func (h *htlcSwitch) handleLinkUpdate(req *linkInfoUpdateMsg) {
 	h.chanIndexMtx.RLock()
 	link := h.chanIndex[*req.targetLink]
