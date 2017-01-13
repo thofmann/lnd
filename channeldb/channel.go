@@ -41,7 +41,7 @@ var (
 
 	// channelLogBucket is dedicated for storing the necessary delta state
 	// between channel updates required to re-construct a past state in
-	// order to punish a counter-party attempting a non-cooperative channel
+	// order to punish a counterparty attempting a non-cooperative channel
 	// closure. A channel log bucket is created for each node and is nested
 	// within a node's ID bucket.
 	channelLogBucket = []byte("clb")

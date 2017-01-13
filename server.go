@@ -197,7 +197,7 @@ func newServer(listenAddrs []string, notifier chainntnfs.ChainNotifier,
 
 	// In order to promote liveness of our active channels, instruct the
 	// connection manager to attempt to establish and maintain persistent
-	// connections to all our direct channel counter-parties.
+	// connections to all our direct channel counterparties.
 	linkNodes, err := s.chanDB.FetchAllLinkNodes()
 	if err != nil && err != channeldb.ErrLinkNodesNotFound {
 		return nil, err
@@ -239,7 +239,7 @@ func (s *server) Start() error {
 	// goroutines can be notified when a funding transaction reaches a
 	// sufficient number of confirmations, or when the input for the
 	// funding transaction is spent in an attempt at an uncooperative close
-	// by the counter-party.
+	// by the counterparty.
 	if err := s.chainNotifier.Start(); err != nil {
 		return err
 	}
