@@ -388,7 +388,7 @@ func (f *fundingManager) handleFundingRequest(fmsg *fundingRequestMsg) {
 	}
 	f.resMtx.Unlock()
 
-	// With our portion of the reservation initialied, process the
+	// With our portion of the reservation initialized, process the
 	// initiators contribution to the channel.
 	_, addrs, _, err := txscript.ExtractPkScriptAddrs(msg.DeliveryPkScript, activeNetParams.Params)
 	if err != nil {
