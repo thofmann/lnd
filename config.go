@@ -167,7 +167,7 @@ func loadConfig() (*config, error) {
 		return nil, err
 	}
 
-	// Validate profile port number
+	// Validate profile port number.
 	if cfg.Profile != "" {
 		profilePort, err := strconv.Atoi(cfg.Profile)
 		if err != nil || profilePort < 1024 || profilePort > 65535 {
