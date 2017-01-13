@@ -1095,7 +1095,7 @@ func processRemoveEntry(htlc *PaymentDescriptor, ourBalance,
 
 	switch {
 	// If an incoming HTLC is being settled, then this means that we've
-	// received the preimage either from another sub-system, or the
+	// received the preimage either from another subsystem, or the
 	// upstream peer in the route. Therefore, we increase our balance by
 	// the HTLC amount.
 	case isIncoming && htlc.EntryType == Settle:
@@ -1780,7 +1780,7 @@ func (lc *LightningChannel) ReceiveCancelHTLC(logIndex uint32) error {
 
 // ChannelPoint returns the outpoint of the original funding transaction which
 // created this active channel. This outpoint is used throughout various
-// sub-systems to uniquely identify an open channel.
+// subsystems to uniquely identify an open channel.
 func (lc *LightningChannel) ChannelPoint() *wire.OutPoint {
 	return lc.channelState.ChanID
 }

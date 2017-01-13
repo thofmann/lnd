@@ -49,7 +49,7 @@ type outgoinMsg struct {
 	sentChan chan struct{} // MUST be buffered.
 }
 
-// chanSnapshotReq is a message sent by outside sub-systems to a peer in order
+// chanSnapshotReq is a message sent by outside subsystems to a peer in order
 // to gain a snapshot of the peer's currently active channels.
 type chanSnapshotReq struct {
 	resp chan []*channeldb.ChannelSnapshot
@@ -353,7 +353,7 @@ func (p *peer) readNextMessage() (lnwire.Message, []byte, error) {
 }
 
 // readHandler is responsible for reading messages off the wire in series, then
-// properly dispatching the handling of the message to the proper sub-system.
+// properly dispatching the handling of the message to the proper subsystem.
 //
 // NOTE: This method MUST be run as a goroutine.
 func (p *peer) readHandler() {
@@ -522,7 +522,7 @@ fin:
 	peerLog.Tracef("writeHandler for peer %v done", p)
 }
 
-// queueHandler is responsible for accepting messages from outside sub-systems
+// queueHandler is responsible for accepting messages from outside subsystems
 // to be eventually sent out on the wire by the writeHandler.
 //
 // NOTE: This method MUST be run as a goroutine.
@@ -733,7 +733,7 @@ func (p *peer) executeCooperativeClose(channel *lnwallet.LightningChannel) (*cha
 }
 
 // handleLocalClose kicks-off the workflow to execute a cooperative or forced
-// unilateral closure of the channel initiated by a local sub-system.
+// unilateral closure of the channel initiated by a local subsystem.
 // TODO(roasbeef): if no more active channels with peer call Remove on connMgr
 // with peerID
 func (p *peer) handleLocalClose(req *closeLinkReq) {
@@ -817,7 +817,7 @@ func (p *peer) handleLocalClose(req *closeLinkReq) {
 			return
 		}
 
-		// Respond to the local sub-system which requested the channel
+		// Respond to the local subsystem which requested the channel
 		// closure.
 		req.updates <- &lnrpc.CloseStatusUpdate{
 			Update: &lnrpc.CloseStatusUpdate_ChanClose{
@@ -959,7 +959,7 @@ type commitmentState struct {
 	// cancelReasons stores the reason why a particular HTLC was cancelled.
 	// The index of the HTLC within the log is mapped to the cancellation
 	// reason. This value is used to thread the proper error through to the
-	// htlcSwitch, or sub-system that initiated the HTLC.
+	// htlcSwitch, or subsystem that initiated the HTLC.
 	cancelReasons map[uint32]lnwire.CancelReason
 
 	// TODO(roasbeef): use once trickle+batch logic is in

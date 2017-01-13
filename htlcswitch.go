@@ -540,7 +540,7 @@ func (h *htlcSwitch) handleRegisterLink(req *registerLinkMsg) {
 
 	// Next, update the onion index which is used to look up the
 	// settle/clear links during multi-hop payments and to dispatch
-	// outgoing payments initiated by a local sub-system.
+	// outgoing payments initiated by a local subsystem.
 	var onionId [ripemd160.Size]byte
 	copy(onionId[:], btcutil.Hash160(req.peer.addr.IdentityKey.SerializeCompressed()))
 

@@ -14,14 +14,14 @@ import (
 	"github.com/roasbeef/btcutil"
 )
 
-// breachArbiter is a special sub-system which is responsible for watching and
+// breachArbiter is a special subsystem which is responsible for watching and
 // acting on the detection of any attempted uncooperative channel breaches by
 // channel counter-parties. This file essentially acts as deterrence code for
 // those attempting to launch attacks against the daemon. In practice it's
 // expected that the logic in this file never gets executed, but it is
 // important to have it in place just in case we encounter cheating channel
 // counter-parties.
-// TODO(roasbeef): closures in config for sub-system pointers to decouple?
+// TODO(roasbeef): closures in config for subsystem pointers to decouple?
 type breachArbiter struct {
 	wallet     *lnwallet.LightningWallet
 	db         *channeldb.DB
@@ -42,7 +42,7 @@ type breachArbiter struct {
 	// use this to communicate with the main contractObserver goroutine.
 	breachedContracts chan *retributionInfo
 
-	// newContracts is a channel which is used by outside sub-systems to
+	// newContracts is a channel which is used by outside subsystems to
 	// notify the breachArbiter of a new contract (a channel) that should
 	// be watched.
 	newContracts chan *lnwallet.LightningChannel

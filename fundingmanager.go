@@ -40,7 +40,7 @@ type reservationWithCtx struct {
 	err     chan error
 }
 
-// initFundingMsg is sent by an outside sub-system to the funding manager in
+// initFundingMsg is sent by an outside subsystem to the funding manager in
 // order to kick-off a funding workflow with a specified target peer. The
 // original request which defines the parameters of the funding workflow are
 // embedded within this message giving the funding manager full context w.r.t
@@ -135,7 +135,7 @@ type fundingManager struct {
 	queries chan interface{}
 
 	// fundingRequests is a channel used to receive channel initiation
-	// requests from a local sub-system within the daemon.
+	// requests from a local subsystem within the daemon.
 	fundingRequests chan *initFundingMsg
 
 	fakeProof *channelProof

@@ -444,7 +444,7 @@ func (r *rpcServer) CloseChannel(in *lnrpc.CloseChannelRequest,
 				return
 			}
 
-			// Respond to the local sub-system which requested the
+			// Respond to the local subsystem which requested the
 			// channel closure.
 			updateChan <- &lnrpc.CloseStatusUpdate{
 				Update: &lnrpc.CloseStatusUpdate_ChanClose{
@@ -1018,7 +1018,7 @@ func (r *rpcServer) constructPaymentRoute(destNode *btcec.PublicKey,
 		return nil, nil, err
 	}
 
-	// Craft an HTLC packet to send to the routing sub-system. The
+	// Craft an HTLC packet to send to the routing subsystem. The
 	// meta-data within this packet will be used to route the payment
 	// through the network.
 	htlcAdd := &lnwire.HTLCAddRequest{

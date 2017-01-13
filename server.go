@@ -301,7 +301,7 @@ func (s *server) WaitForShutdown() {
 	s.wg.Wait()
 }
 
-// broadcastReq is a message sent to the server by a related sub-system when it
+// broadcastReq is a message sent to the server by a related subsystem when it
 // wishes to broadcast one or more messages to all connected peers. Thi
 type broadcastReq struct {
 	ignore *btcec.PublicKey
@@ -337,7 +337,7 @@ func (s *server) broadcastMessage(skip *btcec.PublicKey, msgs ...lnwire.Message)
 	}
 }
 
-// sendReq is  message sent to the server by a related sub-system which it
+// sendReq is  message sent to the server by a related subsystem which it
 // wishes to send a set of messages to a specified peer.
 type sendReq struct {
 	target *btcec.PublicKey
