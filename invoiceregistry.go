@@ -15,7 +15,7 @@ import (
 var (
 	// debugPre is the default debug preimage which is inserted into the
 	// invoice registry if the --debughtlc flag is activated on start up.
-	// All nodes initialize with the flag active will immediately settle
+	// All nodes initialized with the flag active will immediately settle
 	// any incoming HTLC whose rHash is corresponds with the debug
 	// preimage.
 	debugPre, _ = chainhash.NewHash(bytes.Repeat([]byte{1}, 32))
