@@ -150,7 +150,7 @@ func loadConfig() (*config, error) {
 
 	// Multiple networks can't be selected simultaneously.
 	// Count number of network flags passed; assign active network params
-	// while we're at it
+	// while we're at it.
 	numNets := 0
 	if cfg.TestNet3 {
 		numNets++
