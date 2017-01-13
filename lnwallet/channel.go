@@ -540,7 +540,7 @@ func NewLightningChannel(signer Signer, bio BlockChainIO,
 }
 
 // BreachRetribution contains all the data necessary to bring a channel
-// counter-party to justice claiming ALL lingering funds within the channel in
+// counterparty to justice claiming ALL lingering funds within the channel in
 // the scenario that they broadcast a revoked commitment transaction. A
 // BreachRetribution is created by the closeObserver if it detects an
 // uncooperative close of the channel which uses a revoked commitment
@@ -680,7 +680,7 @@ func newBreachRetribution(chanState *channeldb.OpenChannel, stateNum uint64,
 // the following three scenarios: a cooperative close, a unilateral close, and
 // a uncooperative contract breaching close. In the case of the last scenario a
 // BreachRetribution struct is created and sent over the ContractBreach channel
-// notifying subscribers that the counter-party has violated the condition of
+// notifying subscribers that the counterparty has violated the condition of
 // the channel by broadcasting a revoked prior state.
 //
 // NOTE: This MUST be run as a goroutine.
@@ -2124,7 +2124,7 @@ func (lc *LightningChannel) StateSnapshot() *channeldb.ChannelSnapshot {
 // funding output. The commitment transaction contains two outputs: one paying
 // to the "owner" of the commitment transaction which can be spent after a
 // relative block delay or revocation event, and the other paying the the
-// counter-party within the channel, which can be spent immediately.
+// counterparty within the channel, which can be spent immediately.
 func CreateCommitTx(fundingOutput *wire.TxIn, selfKey, theirKey *btcec.PublicKey,
 	revokeKey *btcec.PublicKey, csvTimeout uint32, amountToSelf,
 	amountToThem btcutil.Amount) (*wire.MsgTx, error) {

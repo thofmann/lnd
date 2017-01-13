@@ -181,7 +181,7 @@ func DeriveRevocationPubkey(commitPubKey *btcec.PublicKey,
 **RIGHT**
 ```go
 // DeriveRevocationPubkey derives the revocation public key given the
-// counter-party's commitment key, and revocation pre-image derived via a
+// counterparty's commitment key, and revocation pre-image derived via a
 // pseudo-random-function. In the event that we (for some reason) broadcast a
 // revoked commitment transaction, then if the other party knows the revocation
 // pre-image, then they'll be able to derive the corresponding private key to

@@ -38,7 +38,7 @@ type breachArbiter struct {
 
 	// breachedContracts is a channel which is used internally within the
 	// struct to send the necessary information required to punish a
-	// counter-party once a channel breach is detected. Breach observers
+	// counterparty once a channel breach is detected. Breach observers
 	// use this to communicate with the main contractObserver goroutine.
 	breachedContracts chan *retributionInfo
 
@@ -241,7 +241,7 @@ out:
 
 // exactRetribution is a goroutine which is executed once a contract breach has
 // been detected by a breachObserver. This function is responsible for
-// punishing a counter-party for violating the channel contract by sweeping ALL
+// punishing a counterparty for violating the channel contract by sweeping ALL
 // the lingering funds within the channel into the daemon's wallet.
 //
 // NOTE: This MUST be run as a goroutine.
@@ -282,7 +282,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 	}))
 
 	// Finally, broadcast the transaction, finalizing the channels'
-	// retribution against the cheating counter-party.
+	// retribution against the cheating counterparty.
 	if err := b.wallet.PublishTransaction(justiceTx); err != nil {
 		brarLog.Errorf("unable to broadcast "+
 			"justice tx: %v", err)
@@ -352,7 +352,7 @@ func (b *breachArbiter) breachObserver(contract *lnwallet.LightningChannel,
 
 	// A read from this channel indicates that a channel breach has been
 	// detected! So we notify the main coordination goroutine with the
-	// information needed to bring the counter-party to justice.
+	// information needed to bring the counterparty to justice.
 	case breachInfo := <-contract.ContractBreach:
 		brarLog.Warnf("REVOKED STATE #%v FOR ChannelPoint(%v) "+
 			"broadcast, REMOTE PEER IS DOING SOMETHING "+
@@ -441,7 +441,7 @@ type breachedOutput struct {
 
 // retributionInfo encapsulates all the data needed to sweep all the contested
 // funds within a channel whose contract has been breached by the prior
-// counter-party. This struct is used by the utxoNursery to create the justice
+// counterparty. This struct is used by the utxoNursery to create the justice
 // transaction which spends all outputs of the commitment transaction into an
 // output controlled by the wallet.
 type retributionInfo struct {
@@ -459,7 +459,7 @@ type retributionInfo struct {
 
 // createJusticeTx creates a transaction which exacts "justice" by sweeping ALL
 // the funds within the channel which we are now entitled to due to a breach of
-// the channel's contract by the counter-party. This function returns a *fully*
+// the channel's contract by the counterparty. This function returns a *fully*
 // signed transaction with the witness for each input fully in place.
 func (b *breachArbiter) createJusticeTx(r *retributionInfo) (*wire.MsgTx, error) {
 	// First, we obtain a new public key script from the wallet which we'll

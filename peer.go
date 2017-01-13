@@ -756,7 +756,7 @@ func (p *peer) handleLocalClose(req *closeLinkReq) {
 			"ChannelPoint(%v) with txid: %v", req.chanPoint,
 			closingTxid)
 
-	// A type of CloseBreach indicates that the counter-party has breached
+	// A type of CloseBreach indicates that the counterparty has breached
 	// the cahnnel therefore we need to clean up our local state.
 	case CloseBreach:
 		peerLog.Infof("ChannelPoint(%v) has been breached, wiping "+

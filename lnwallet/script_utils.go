@@ -641,7 +641,7 @@ func CommitSpendTimeout(signer Signer, signDesc *SignDescriptor,
 }
 
 // CommitSpendRevoke constructs a valid witness allowing a node to sweep the
-// settled output of a malicious counter-party who broadcasts a revoked
+// settled output of a malicious counterparty who broadcasts a revoked
 // commitment transaction.
 func CommitSpendRevoke(signer Signer, signDesc *SignDescriptor,
 	sweepTx *wire.MsgTx) (wire.TxWitness, error) {
@@ -662,7 +662,7 @@ func CommitSpendRevoke(signer Signer, signDesc *SignDescriptor,
 }
 
 // CommitSpendNoDelay constructs a valid witness allowing a node to spend their
-// settled no-delay output on the counter-party's commitment transaction.
+// settled no-delay output on the counterparty's commitment transaction.
 func CommitSpendNoDelay(signer Signer, signDesc *SignDescriptor,
 	sweepTx *wire.MsgTx) (wire.TxWitness, error) {
 
@@ -677,7 +677,7 @@ func CommitSpendNoDelay(signer Signer, signDesc *SignDescriptor,
 }
 
 // DeriveRevocationPubkey derives the revocation public key given the
-// counter-party's commitment key, and revocation pre-image derived via a
+// counterparty's commitment key, and revocation pre-image derived via a
 // pseudo-random-function. In the event that we (for some reason) broadcast a
 // revoked commitment transaction, then if the other party knows the revocation
 // pre-image, then they'll be able to derive the corresponding private key to

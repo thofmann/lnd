@@ -858,7 +858,7 @@ func (f *fundingManager) handleFundingOpen(fmsg *fundingOpenMsg) {
 
 	// Send the newly opened channel to the breach arbiter to it can watch
 	// for uncooperative channel breaches, potentially punishing the
-	// counter-party for attempting to cheat us.
+	// counterparty for attempting to cheat us.
 	f.breachAribter.newContracts <- openChan
 
 	// Finally, notify the target peer of the newly open channel.
