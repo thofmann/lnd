@@ -219,7 +219,7 @@ func (h *htlcSwitch) SendHTLC(htlcPkt *htlcPacket) error {
 // their links. The duties of the forwarder are similar to that of a network
 // switch, in that it facilitates multi-hop payments by acting as a central
 // messaging bus. The switch communicates will active links to create, manage,
-// and tear down active onion routed payments.Each active channel is modeled
+// and tear down active onion routed payments. Each active channel is modeled
 // as networked device with metadata such as the available payment bandwidth,
 // and total link capacity.
 func (h *htlcSwitch) htlcForwarder() {
@@ -305,7 +305,7 @@ out:
 					hswcLog.Errorf("unable to find dest end of "+
 						"circuit: %x", nextHop)
 
-					// We we're unable to locate the
+					// We were unable to locate the
 					// next-hop as encoded within the
 					// Sphinx packet. Therefore, we send a
 					// cancellation message back to the
