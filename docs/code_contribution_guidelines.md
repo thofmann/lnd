@@ -275,7 +275,7 @@ all short-[commit messages are to be prefixed according to the convention
 outlined in the Go project](https://golang.org/doc/contribute.html#change). All
 commits should begin with the sub-system or package primarily affected by the
 change. In the case of a widespread change, the packages are to be delimited by
-either a '+' or a ','. This prefix seems minor but can be extremly helpful it
+either a '+' or a ','. This prefix seems minor but can be extremly helpful in
 determining the scope of a commit at a glance, or when bug hunting to find a
 commit which introduced a bug or regression. 
 
