@@ -788,7 +788,7 @@ func (f *fundingManager) handleFundingSignComplete(fmsg *fundingSignCompleteMsg)
 }
 
 // announceChannel announces a newly created channel to the rest of the network
-// by crafting the two authenticated announcement required for the peers on the
+// by crafting the two authenticated announcements required for the peers on the
 // network to recognize the legitimacy of the channel. The crafted
 // announcements are then send to the channel router to handle broadcasting to
 // the network during its next trickle.
