@@ -750,7 +750,7 @@ type closeLinkReq struct {
 	err     chan error
 }
 
-// CloseLink closes an active link targetted by it's channel point. Closing the
+// CloseLink closes an active link targetted by its channel point. Closing the
 // link initiates a cooperative channel closure iff forceClose is false. If
 // forceClose is true, then a unilateral channel closure is executed.
 // TODO(roasbeef): consolidate with UnregisterLink?
