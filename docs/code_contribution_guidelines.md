@@ -284,9 +284,9 @@ commit which introduced a bug or regression.
 
 Blocks of code within lnd should be segmented into logical stanzas of
 operation. Such spacing makes the code easier to follow at a skim, and reduces
-unnecessary line noise. Coupled commenting scheme specified above, proper spacing
-allows readers to quickly scan code, extracting semantics quickly. Functions
-should _not_ just be layed out as a bare contigious block of code. 
+unnecessary line noise. Coupled with the commenting scheme specified above,
+proper spacing allows readers to quickly scan code, extracting semantics quickly.
+Functions should _not_ just be layed out as a bare contigious block of code. 
 
 - **Wrong**   
 ```go
