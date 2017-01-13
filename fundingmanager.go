@@ -967,8 +967,8 @@ func (f *fundingManager) processErrorGeneric(err *lnwire.ErrorGeneric,
 }
 
 // handleErrorGenericMsg process the error which was received from remote peer,
-// depends on the type of error we should do different clean up steps and
-// inform user about it.
+// depending on the type of error we should do different clean up steps and
+// inform the user about it.
 func (f *fundingManager) handleErrorGenericMsg(fmsg *fundingErrorMsg) {
 	e := fmsg.err
 
