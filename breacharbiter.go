@@ -329,7 +329,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 }
 
 // breachObserver notifies the breachArbiter contract observer goroutine that a
-// channel's contract has been breached by the prior counter party. Once
+// channel's contract has been breached by the prior counter-party. Once
 // notified the breachArbiter will attempt to sweep ALL funds within the
 // channel using the information provided within the BreachRetribution
 // generated due to the breach of channel contract. The funds will be swept
@@ -387,7 +387,7 @@ func (b *breachArbiter) breachObserver(contract *lnwallet.LightningChannel,
 		}
 
 		// Next we create the witness generation function that will be
-		// used to sweep the cheating counter party's output by taking
+		// used to sweep the cheating counter-party's output by taking
 		// advantage of the revocation clause within the output's
 		// witness script.
 		remoteSignDesc := breachInfo.RemoteOutputSignDesc

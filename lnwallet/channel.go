@@ -430,7 +430,7 @@ type LightningChannel struct {
 	// ContractBreach is a channel that is used to communicate the data
 	// necessary to fully resolve the channel in the case that a contract
 	// breach is detected. A contract breach occurs it is detected that the
-	// counter party has broadcast a prior *revoked* state.
+	// counter-party has broadcast a prior *revoked* state.
 	ContractBreach chan *BreachRetribution
 
 	// LocalFundingKey is the public key under control by the wallet that

@@ -480,7 +480,7 @@ out:
 // same inputs in the funding transaction. If reservation initialization is
 // successful, a ChannelReservation containing our completed contribution is
 // returned. Our contribution contains all the items necessary to allow the
-// counter party to build the funding transaction, and both versions of the
+// counter-party to build the funding transaction, and both versions of the
 // commitment transaction. Otherwise, an error occurred a nil pointer along with
 // an error are returned.
 //
