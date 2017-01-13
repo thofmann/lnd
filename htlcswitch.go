@@ -435,7 +435,7 @@ out:
 			// route. In response, we'll terminate the payment
 			// circuit and propagate the error backwards.
 			case *lnwire.CancelHTLC:
-				// In order to properly handle the error, well
+				// In order to properly handle the error, we'll
 				// need to look up the original circuit that
 				// the incoming HTLC created.
 				circuit, ok := h.paymentCircuits[pkt.payHash]
