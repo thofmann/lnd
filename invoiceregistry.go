@@ -190,7 +190,7 @@ type invoiceSubscription struct {
 	id  uint32
 }
 
-// Cancel unregisters the invoiceSubscription, freeing any previously allocate
+// Cancel unregisters the invoiceSubscription, freeing any previously allocated
 // resources.
 func (i *invoiceSubscription) Cancel() {
 	i.inv.clientMtx.Lock()
