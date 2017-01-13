@@ -1582,7 +1582,7 @@ func (p *peer) updateCommitTx(state *commitmentState) (bool, error) {
 
 // logEntryToHtlcPkt converts a particular Lightning Commitment Protocol (LCP)
 // log entry the corresponding htlcPacket with src/dest set along with the
-// proper wire message. This helper method is provided in order to aide an
+// proper wire message. This helper method is provided in order to aid an
 // htlcManager in forwarding packets to the htlcSwitch.
 func logEntryToHtlcPkt(chanPoint wire.OutPoint,
 	pd *lnwallet.PaymentDescriptor,

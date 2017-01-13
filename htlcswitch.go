@@ -30,7 +30,7 @@ const (
 // active channel registered with the htlc switch creates a new link which will
 // be used for forwarding outgoing HTLCs. The link also has additional
 // metadata such as the current available bandwidth of the link (in satoshis)
-// which aide the switch in optimally forwarding HTLCs.
+// which aid the switch in optimally forwarding HTLCs.
 type link struct {
 	capacity btcutil.Amount
 

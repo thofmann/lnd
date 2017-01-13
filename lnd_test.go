@@ -33,7 +33,7 @@ import (
 
 // harnessTest wraps a regular testing.T providing enhanced error detection
 // and propagation. All error will be augmented with a full stack-trace in
-// order to aide in debugging. Additionally, any panics caused by active
+// order to aid in debugging. Additionally, any panics caused by active
 // test cases will also be handled and represented as fatals.
 type harnessTest struct {
 	t *testing.T
