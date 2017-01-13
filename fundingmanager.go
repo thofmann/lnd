@@ -443,7 +443,7 @@ func (f *fundingManager) handleFundingResponse(fmsg *fundingResponseMsg) {
 
 	resCtx, err := f.getReservationCtx(peerID, chanID)
 	if err != nil {
-		fndgLog.Warnf("can' find reservation (peerID:%v, chanID:%v)",
+		fndgLog.Warnf("Can't find reservation (peerID:%v, chanID:%v)",
 			peerID, chanID)
 		return
 	}
