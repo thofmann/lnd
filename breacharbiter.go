@@ -261,7 +261,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 		}
 
 		// Otherwise, if this is a real confirmation notification, then
-		// we fall through to complete out duty.
+		// we fall through to complete our duty.
 	case <-b.quit:
 		return
 	}
