@@ -119,7 +119,7 @@ func (i *invoiceRegistry) LookupInvoice(rHash chainhash.Hash) (*channeldb.Invoic
 }
 
 // SettleInvoice attempts to mark an invoice as settled. If the invoice is a
-// dbueg invoice, then this method is a noop as debug invoices are never fully
+// debug invoice, then this method is a noop as debug invoices are never fully
 // settled.
 func (i *invoiceRegistry) SettleInvoice(rHash chainhash.Hash) error {
 	ltndLog.Debugf("Settling invoice %x", rHash[:])
