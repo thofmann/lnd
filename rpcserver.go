@@ -1164,7 +1164,7 @@ func (r *rpcServer) AddInvoice(ctx context.Context,
 		return nil, err
 	}
 
-	// Next, generate the payment hash itself from the pre-image. This will
+	// Next, generate the payment hash itself from the preimage. This will
 	// be used by clients to query for the state of a particular invoice.
 	rHash := fastsha256.Sum256(paymentPreimage[:])
 

@@ -217,8 +217,8 @@ func makeWitnessTestCase(t *testing.T, f func() (wire.TxWitness, error)) func() 
 // sender script:
 //  * receiver spends
 //    * revoke w/ sig
-//    * HTLC with invalid pre-image size
-//    * HTLC with valid pre-image size + sig
+//    * HTLC with invalid preimage size
+//    * HTLC with valid preimage size + sig
 //  * sender spends
 //    * invalid lock-time for CLTV
 //    * invalid sequence for CSV
@@ -235,7 +235,7 @@ func TestHTLCSenderSpendValidation(t *testing.T) {
 	}
 	fakeFundingTxIn := wire.NewTxIn(fundingOut, nil, nil)
 
-	// Generate a payment and revocation pre-image to be used below.
+	// Generate a payment and revocation preimage to be used below.
 	revokePreimage := testHdSeed[:]
 	revokeHash := fastsha256.Sum256(revokePreimage)
 	paymentPreimage := revokeHash
@@ -302,18 +302,18 @@ func TestHTLCSenderSpendValidation(t *testing.T) {
 			true,
 		},
 		{
-			// HTLC with invalid pre-image size
+			// HTLC with invalid preimage size
 			makeWitnessTestCase(t, func() (wire.TxWitness, error) {
 				return senderHtlcSpendRedeem(htlcScript, paymentAmt,
 					bobKeyPriv, sweepTx,
-					// Invalid pre-image length
+					// Invalid preimage length
 					bytes.Repeat([]byte{1}, 45))
 			}),
 			false,
 		},
 		{
-			// HTLC with valid pre-image size + sig
-			// TODO(roabeef): invalid pre-image
+			// HTLC with valid preimage size + sig
+			// TODO(roabeef): invalid preimage
 			makeWitnessTestCase(t, func() (wire.TxWitness, error) {
 				return senderHtlcSpendRedeem(htlcScript, paymentAmt,
 					bobKeyPriv, sweepTx,
@@ -407,7 +407,7 @@ func TestHTLCReceiverSpendValidation(t *testing.T) {
 	}
 	fakeFundingTxIn := wire.NewTxIn(fundingOut, nil, nil)
 
-	// Generate a payment and revocation pre-image to be used below.
+	// Generate a payment and revocation preimage to be used below.
 	revokePreimage := testHdSeed[:]
 	revokeHash := fastsha256.Sum256(revokePreimage)
 	paymentPreimage := revokeHash

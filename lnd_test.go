@@ -516,7 +516,7 @@ func testSingleHopInvoice(net *networkHarness, t *harnessTest) {
 
 	// Now that the channel is open, create an invoice for Bob which
 	// expects a payment of 1000 satoshis from Alice paid via a particular
-	// pre-image.
+	// preimage.
 	const paymentAmt = 1000
 	preimage := bytes.Repeat([]byte("A"), 32)
 	invoice := &lnrpc.Invoice{
@@ -628,7 +628,7 @@ func testListPayments(net *networkHarness, t *harnessTest) {
 
 	// Now that the channel is open, create an invoice for Bob which
 	// expects a payment of 1000 satoshis from Alice paid via a particular
-	// pre-image.
+	// preimage.
 	const paymentAmt = 1000
 	preimage := bytes.Repeat([]byte("B"), 32)
 	invoice := &lnrpc.Invoice{

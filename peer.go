@@ -1250,7 +1250,7 @@ func (p *peer) handleUpstreamMsg(state *commitmentState, msg lnwire.Message) {
 
 		// We just received an add request from an upstream peer, so we
 		// add it to our state machine, then add the HTLC to our
-		// "settle" list in the event that we know the pre-image
+		// "settle" list in the event that we know the preimage
 		index, err := state.channel.ReceiveHTLC(htlcPkt)
 		if err != nil {
 			peerLog.Errorf("Receiving HTLC rejected: %v", err)
@@ -1330,7 +1330,7 @@ func (p *peer) handleUpstreamMsg(state *commitmentState, msg lnwire.Message) {
 			return
 		}
 
-		// TODO(roasbeef): add pre-image to DB in order to swipe
+		// TODO(roasbeef): add preimage to DB in order to swipe
 		// repeated r-values
 	case *lnwire.CancelHTLC:
 		idx := uint32(htlcPkt.HTLCKey)

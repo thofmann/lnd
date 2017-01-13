@@ -377,7 +377,7 @@ type LightningChannel struct {
 
 	// revocationWindow is a window of revocations sent to use by the
 	// remote party, allowing us to create new commitment transactions
-	// until depleted. The revocations don't contain a valid pre-image,
+	// until depleted. The revocations don't contain a valid preimage,
 	// only an additional key/hash allowing us to create a new commitment
 	// transaction for the remote node that they are able to revoke. If
 	// this slice is empty, then we cannot make any new updates to their
@@ -1401,7 +1401,7 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 	lc.Lock()
 	defer lc.Unlock()
 
-	// The revocation has a nil (zero) pre-image, then this should simply be
+	// The revocation has a nil (zero) preimage, then this should simply be
 	// added to the end of the revocation window for the remote node.
 	if bytes.Equal(zeroHash[:], revMsg.Revocation[:]) {
 		lc.revocationWindow = append(lc.revocationWindow, revMsg)
@@ -1412,7 +1412,7 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 	currentRevocationKey := lc.channelState.TheirCurrentRevocation
 	pendingRevocation := chainhash.Hash(revMsg.Revocation)
 
-	// Ensure the new pre-image fits in properly within the elkrem receiver
+	// Ensure the new preimage fits in properly within the elkrem receiver
 	// tree. If this fails, then all other checks are skipped.
 	// TODO(rosbeef): abstract into func
 	remoteElkrem := lc.channelState.RemoteElkrem
@@ -1421,14 +1421,14 @@ func (lc *LightningChannel) ReceiveRevocation(revMsg *lnwire.CommitRevocation) (
 	}
 
 	// Verify that the revocation public key we can derive using this
-	// pre-image and our private key is identical to the revocation key we
+	// preimage and our private key is identical to the revocation key we
 	// were given for their current (prior) commitment transaction.
 	revocationPub := DeriveRevocationPubkey(ourCommitKey, pendingRevocation[:])
 	if !revocationPub.IsEqual(currentRevocationKey) {
 		return nil, fmt.Errorf("revocation key mismatch")
 	}
 
-	// Additionally, we need to ensure we were given the proper pre-image
+	// Additionally, we need to ensure we were given the proper preimage
 	// to the revocation hash used within any current HTLCs.
 	if !bytes.Equal(lc.channelState.TheirCurrentRevocationHash[:], zeroHash[:]) {
 		revokeHash := fastsha256.Sum256(pendingRevocation[:])
@@ -1641,7 +1641,7 @@ func (lc *LightningChannel) ReceiveHTLC(htlc *lnwire.HTLCAddRequest) (uint32, er
 
 // SettleHTLC attempts to settle an existing outstanding received HTLC. The
 // remote log index of the HTLC settled is returned in order to facilitate
-// creating the corresponding wire message. In the case the supplied pre-image
+// creating the corresponding wire message. In the case the supplied preimage
 // is invalid, an error is returned.
 func (lc *LightningChannel) SettleHTLC(preimage [32]byte) (uint32, error) {
 	lc.Lock()

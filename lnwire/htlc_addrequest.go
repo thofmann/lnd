@@ -43,7 +43,7 @@ type HTLCAddRequest struct {
 
 	// RedemptionHashes are the hashes to be used within the HTLC script.
 	// An HTLC is only fufilled once Bob is provided with the required
-	// number of pre-images for each of the listed hashes. For regular HTLCs
+	// number of preimages for each of the listed hashes. For regular HTLCs
 	// this slice only has one hash. However, for "multi-sig" HTLCs, the
 	// length of this slice should be N.
 	RedemptionHashes [][32]byte

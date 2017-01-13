@@ -221,7 +221,7 @@ type OpenChannel struct {
 	RemoteCsvDelay uint32
 
 	// Current revocation for their commitment transaction. However, since
-	// this the derived public key, we don't yet have the pre-image so we
+	// this the derived public key, we don't yet have the preimage so we
 	// aren't yet able to verify that it's actually in the hash chain.
 	TheirCurrentRevocation     *btcec.PublicKey
 	TheirCurrentRevocationHash [32]byte

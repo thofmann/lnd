@@ -754,7 +754,7 @@ func (l *LightningWallet) handleContributionMsg(req *addContributionMsg) {
 	pendingReservation.partialState.FundingOutpoint = fundingOutpoint
 
 	// Initialize an empty sha-chain for them, tracking the current pending
-	// revocation hash (we don't yet know the pre-image so we can't add it
+	// revocation hash (we don't yet know the preimage so we can't add it
 	// to the chain).
 	e := &elkrem.ElkremReceiver{}
 	pendingReservation.partialState.RemoteElkrem = e
@@ -921,7 +921,7 @@ func (l *LightningWallet) handleSingleContribution(req *addSingleContributionMsg
 	ourRevokeKey := DeriveRevocationPubkey(theirCommitKey, firstPreimage[:])
 
 	// Initialize an empty sha-chain for them, tracking the current pending
-	// revocation hash (we don't yet know the pre-image so we can't add it
+	// revocation hash (we don't yet know the preimage so we can't add it
 	// to the chain).
 	remoteElkrem := &elkrem.ElkremReceiver{}
 	pendingReservation.partialState.RemoteElkrem = remoteElkrem

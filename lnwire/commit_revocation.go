@@ -24,7 +24,7 @@ type CommitRevocation struct {
 	// CommitRevocation applies to.
 	ChannelPoint *wire.OutPoint
 
-	// Revocation is the pre-image to the revocation hash of the now prior
+	// Revocation is the preimage to the revocation hash of the now prior
 	// commitment transaction.
 	//
 	// If the received revocation is the all zeroes hash ('0' * 32), then

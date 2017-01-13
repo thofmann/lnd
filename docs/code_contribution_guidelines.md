@@ -181,10 +181,10 @@ func DeriveRevocationPubkey(commitPubKey *btcec.PublicKey,
 **RIGHT**
 ```go
 // DeriveRevocationPubkey derives the revocation public key given the
-// counterparty's commitment key, and revocation pre-image derived via a
+// counterparty's commitment key, and revocation preimage derived via a
 // pseudo-random-function. In the event that we (for some reason) broadcast a
 // revoked commitment transaction, then if the other party knows the revocation
-// pre-image, then they'll be able to derive the corresponding private key to
+// preimage, then they'll be able to derive the corresponding private key to
 // this private key by exploiting the homomorphism in the elliptic curve group:
 //    * https://en.wikipedia.org/wiki/Group_homomorphism#Homomorphisms_of_abelian_groups
 //
@@ -194,7 +194,7 @@ func DeriveRevocationPubkey(commitPubKey *btcec.PublicKey,
 //             := G*k + G*h
 //             := G * (k+h)
 //
-// Therefore, once we divulge the revocation pre-image, the remote peer is able to
+// Therefore, once we divulge the revocation preimage, the remote peer is able to
 // compute the proper private key for the revokeKey by computing:
 //   revokePriv := commitPriv + revokePreimge mod N
 //
@@ -322,7 +322,7 @@ Functions should _not_ just be layed out as a bare contiguous block of code.
 		witness[2] = sigB
 	}
 
-	// Finally, add the pre-image as the last witness element.
+	// Finally, add the preimage as the last witness element.
 	witness[3] = witnessScript
 
 	return witness
