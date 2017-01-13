@@ -291,7 +291,7 @@ func (b *breachArbiter) exactRetribution(confChan *chainntnfs.ConfirmationEvent,
 
 	// As a conclusionary step, we register for a notification to be
 	// dispatched once the justice tx is confirmed. After confirmation we
-	// notify the caller that initiated the retribution work low that the
+	// notify the caller that initiated the retribution workflow that the
 	// deed has been done.
 	justiceTXID := justiceTx.TxHash()
 	confChan, err = b.notifier.RegisterConfirmationsNtfn(&justiceTXID, 1)
