@@ -861,7 +861,7 @@ func (f *fundingManager) handleFundingOpen(fmsg *fundingOpenMsg) {
 	// counterparty for attempting to cheat us.
 	f.breachAribter.newContracts <- openChan
 
-	// Finally, notify the target peer of the newly open channel.
+	// Finally, notify the target peer of the newly opened channel.
 	fmsg.peer.newChannels <- openChan
 }
 
