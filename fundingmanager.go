@@ -187,7 +187,7 @@ func (f *fundingManager) Start() error {
 	return nil
 }
 
-// Start signals all helper goroutines to execute a graceful shutdown. This
+// Stop signals all helper goroutines to execute a graceful shutdown. This
 // method will block until all goroutines have exited.
 func (f *fundingManager) Stop() error {
 	if atomic.AddInt32(&f.stopped, 1) != 1 {
