@@ -78,7 +78,7 @@ func (i *invoiceRegistry) AddDebugInvoice(amt btcutil.Amount, preimage chainhash
 }
 
 // AddInvoice adds a regular invoice for the specified amount, identified by
-// the passed preimage. Additionally, any memo or recipt data provided will
+// the passed preimage. Additionally, any memo or receipt data provided will
 // also be stored on-disk. Once this invoice is added, subsystems within the
 // daemon add/forward HTLCs are able to obtain the proper preimage required
 // for redemption in the case that we're the final destination.
