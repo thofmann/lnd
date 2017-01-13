@@ -41,7 +41,7 @@ type reservationWithCtx struct {
 }
 
 // initFundingMsg is sent by an outside subsystem to the funding manager in
-// order to kick-off a funding workflow with a specified target peer. The
+// order to kick off a funding workflow with a specified target peer. The
 // original request which defines the parameters of the funding workflow are
 // embedded within this message giving the funding manager full context w.r.t
 // the workflow.

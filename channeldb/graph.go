@@ -214,7 +214,7 @@ func (c *ChannelGraph) ForEachNode(cb func(*LightningNode) error) error {
 }
 
 // SourceNode returns the source node of the graph. The source node is treated
-// as the center node within a star-graph. This method may be used to kick-off
+// as the center node within a star-graph. This method may be used to kick off
 // a path finding algorithm in order to explore the reachability of another
 // node based off the source node.
 func (c *ChannelGraph) SourceNode() (*LightningNode, error) {
