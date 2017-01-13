@@ -497,7 +497,7 @@ func TestSimpleAddSettleWorkflow(t *testing.T) {
 	if htlcs, err := bobChannel.ReceiveRevocation(aliceRevocation2); err != nil {
 		t.Fatalf("bob unable to process alice's revocation: %v", err)
 	} else if len(htlcs) != 0 {
-		t.Fatalf("bob shouldn't forward any HTLC's after outgoing settle, "+
+		t.Fatalf("bob shouldn't forward any HTLCs after outgoing settle, "+
 			"instead can forward: %v", spew.Sdump(htlcs))
 	}
 	if htlcs, err := aliceChannel.ReceiveRevocation(bobRevocation2); err != nil {
@@ -1004,7 +1004,7 @@ func TestStateUpdatePersistence(t *testing.T) {
 
 	// Next, Alice initiates a state transition to lock in the above HTLCs.
 	if err := forceStateTransition(aliceChannel, bobChannel); err != nil {
-		t.Fatalf("unable to lock in HTLC's: %v", err)
+		t.Fatalf("unable to lock in HTLCs: %v", err)
 	}
 
 	// The balances of both channels should be updated accordingly.

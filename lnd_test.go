@@ -870,7 +870,7 @@ func testMultiHopPayments(net *networkHarness, t *harnessTest) {
 
 	select {
 	case <-time.After(time.Second * 10):
-		t.Fatalf("HTLC's not cleared after 10 seconds")
+		t.Fatalf("HTLCs not cleared after 10 seconds")
 	case <-finClear:
 	}
 
