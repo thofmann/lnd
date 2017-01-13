@@ -26,10 +26,10 @@ const (
 	htlcQueueSize = 50
 )
 
-// link represents a an active channel capable of forwarding HTLCs. Each
+// link represents an active channel capable of forwarding HTLCs. Each
 // active channel registered with the htlc switch creates a new link which will
 // be used for forwarding outgoing HTLCs. The link also has additional
-// meta-data such as the current available bandwidth of the link (in satoshis)
+// metadata such as the current available bandwidth of the link (in satoshis)
 // which aide the switch in optimally forwarding HTLCs.
 type link struct {
 	capacity btcutil.Amount
@@ -220,7 +220,7 @@ func (h *htlcSwitch) SendHTLC(htlcPkt *htlcPacket) error {
 // switch, in that it facilitates multi-hop payments by acting as a central
 // messaging bus. The switch communicates will active links to create, manage,
 // and tear down active onion routed payments.Each active channel is modeled
-// as networked device with meta-data such as the available payment bandwidth,
+// as networked device with metadata such as the available payment bandwidth,
 // and total link capacity.
 func (h *htlcSwitch) htlcForwarder() {
 	// TODO(roasbeef): track pending payments here instead of within each peer?
@@ -771,7 +771,7 @@ func (h *htlcSwitch) CloseLink(chanPoint *wire.OutPoint,
 }
 
 // linkInfoUpdateMsg encapsulates a request for the htlc switch to update the
-// meta-data related to the target link.
+// metadata related to the target link.
 type linkInfoUpdateMsg struct {
 	targetLink *wire.OutPoint
 

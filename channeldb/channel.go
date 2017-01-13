@@ -20,7 +20,7 @@ var (
 	// openChanBucket stores all the currently open channels. This bucket
 	// has a second, nested bucket which is keyed by a node's ID. Additionally,
 	// at the base level of this bucket several prefixed keys are stored which
-	// house channel meta-data such as total satoshis sent, number of updates
+	// house channel metadata such as total satoshis sent, number of updates
 	// etc. These fields are stored at this top level rather than within a
 	// node's channel bucket in order to facilitate sequential prefix scans
 	// to gather stats such as total satoshis received.
@@ -342,7 +342,7 @@ func (c *OpenChannel) FullSyncWithAddr(addr *net.TCPAddr) error {
 		}
 
 		// Next, we need to establish a (possibly) new LinkNode
-		// relationship for this channel. The LinkNode meta-data contains
+		// relationship for this channel. The LinkNode metadata contains
 		// reachability, up-time, and service bits related information.
 		// TODO(roasbeef): net info shuld be in lnwire.NetAddress
 		linkNode := c.Db.NewLinkNode(wire.MainNet, c.IdentityPub, addr)
@@ -514,7 +514,7 @@ func (c *OpenChannel) CommitmentHeight() (uint64, error) {
 	}
 
 	err := c.Db.View(func(tx *bolt.Tx) error {
-		// Get the bucket dedicated to storing the meta-data for open
+		// Get the bucket dedicated to storing the metadata for open
 		// channels.
 		openChanBucket := tx.Bucket(openChannelBucket)
 		if openChanBucket == nil {
@@ -614,7 +614,7 @@ func (c *OpenChannel) CloseChannel() error {
 		}
 
 		// Now that the index to this channel has been deleted, purge
-		// the remaining channel meta-data from the database.
+		// the remaining channel metadata from the database.
 		if err := deleteOpenChannel(chanBucket, nodeChanBucket,
 			outPointBytes); err != nil {
 			return err
@@ -648,7 +648,7 @@ type ChannelSnapshot struct {
 
 // Snapshot returns a read-only snapshot of the current channel state. This
 // snapshot includes information concerning the current settled balance within
-// the channel, meta-data detailing total flows, and any outstanding HTLCs.
+// the channel, metadata detailing total flows, and any outstanding HTLCs.
 func (c *OpenChannel) Snapshot() *ChannelSnapshot {
 	c.RLock()
 	defer c.RUnlock()

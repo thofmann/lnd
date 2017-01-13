@@ -261,7 +261,7 @@ type LightningWallet struct {
 	coinSelectMtx sync.RWMutex
 
 	// A wrapper around a namespace within boltdb reserved for ln-based
-	// wallet meta-data. See the 'channeldb' package for further
+	// wallet metadata. See the 'channeldb' package for further
 	// information.
 	ChannelDB *channeldb.DB
 

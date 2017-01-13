@@ -242,7 +242,7 @@ func TestHTLCSenderSpendValidation(t *testing.T) {
 	paymentPreimage[0] ^= 1
 	paymentHash := fastsha256.Sum256(paymentPreimage[:])
 
-	// We'll also need some tests keys for alice and bob, and meta-data of
+	// We'll also need some tests keys for alice and bob, and metadata of
 	// the HTLC output.
 	aliceKeyPriv, aliceKeyPub := btcec.PrivKeyFromBytes(btcec.S256(),
 		testWalletPrivKey)
@@ -414,7 +414,7 @@ func TestHTLCReceiverSpendValidation(t *testing.T) {
 	paymentPreimage[0] ^= 1
 	paymentHash := fastsha256.Sum256(paymentPreimage[:])
 
-	// We'll also need some tests keys for alice and bob, and meta-data of
+	// We'll also need some tests keys for alice and bob, and metadata of
 	// the HTLC output.
 	aliceKeyPriv, aliceKeyPub := btcec.PrivKeyFromBytes(btcec.S256(),
 		testWalletPrivKey)

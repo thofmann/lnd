@@ -95,7 +95,7 @@ const (
 
 // PaymentDescriptor represents a commitment state update which either adds,
 // settles, or removes an HTLC. PaymentDescriptors encapsulate all necessary
-// meta-data w.r.t to an HTLC, and additional data pairing a settle message to
+// metadata w.r.t to an HTLC, and additional data pairing a settle message to
 // the original added HTLC.
 // TODO(roasbeef): LogEntry interface??
 //  * need to separate attrs for cancel/add/settle
@@ -2106,7 +2106,7 @@ func (lc *LightningChannel) CompleteCooperativeClose(remoteSig []byte) (*wire.Ms
 }
 
 // DeleteState deletes all state concerning the channel from the underlying
-// database, only leaving a small summary describing meta-data of the
+// database, only leaving a small summary describing metadata of the
 // channel's lifetime.
 func (lc *LightningChannel) DeleteState() error {
 	return lc.channelState.CloseChannel()

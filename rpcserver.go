@@ -1019,7 +1019,7 @@ func (r *rpcServer) constructPaymentRoute(destNode *btcec.PublicKey,
 	}
 
 	// Craft an HTLC packet to send to the routing subsystem. The
-	// meta-data within this packet will be used to route the payment
+	// metadata within this packet will be used to route the payment
 	// through the network.
 	htlcAdd := &lnwire.HTLCAddRequest{
 		Amount:           route.TotalAmount,
