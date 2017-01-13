@@ -354,7 +354,7 @@ manageable, commits.
 
 Keeping the above in mind, most small changes will be reviewed within a few
 days, while large or far reaching changes may take weeks.  This is a good reason
-to stick with the [Share Early, Share Often](#ShareOften) development practice
+to stick with the [Share Early, Share Often](#ShareEarly) development practice
 outlined above.
 
 ##### What is the review looking for?
