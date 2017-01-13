@@ -59,7 +59,7 @@ type breachArbiter struct {
 	wg      sync.WaitGroup
 }
 
-// newBreachArbiter creates a new instance of a breachArbiter initialize with
+// newBreachArbiter creates a new instance of a breachArbiter initialized with
 // its dependent objects.
 func newBreachArbiter(wallet *lnwallet.LightningWallet, db *channeldb.DB,
 	notifier chainntnfs.ChainNotifier, h *htlcSwitch) *breachArbiter {
