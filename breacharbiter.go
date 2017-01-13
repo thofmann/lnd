@@ -32,7 +32,7 @@ type breachArbiter struct {
 	// observers we're currently managing. The key of the map is the
 	// funding outpoint of the channel, and the value is a channel which
 	// will be closed once we detect that the channel has been
-	// cooperatively closed, there by killing the goroutine and freeing up
+	// cooperatively closed, thereby killing the goroutine and freeing up
 	// resource.
 	breachObservers map[wire.OutPoint]chan struct{}
 
