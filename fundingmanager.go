@@ -92,7 +92,7 @@ type fundingOpenMsg struct {
 
 // fundingErrorMsg couples an lnwire.ErrorGeneric message
 // with the peer who sent the message. This allows the funding
-// manager properly process the error.
+// manager to properly process the error.
 type fundingErrorMsg struct {
 	err  *lnwire.ErrorGeneric
 	peer *peer
