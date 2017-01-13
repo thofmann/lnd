@@ -50,7 +50,7 @@ func newHarnessTest(t *testing.T) *harnessTest {
 }
 
 // Fatalf causes the current active test case to fail with a fatal error. All
-// integration tests should mark test failures soley with this method due to
+// integration tests should mark test failures solely with this method due to
 // the error stack traces it produces.
 func (h *harnessTest) Fatalf(format string, a ...interface{}) {
 	stacktrace := errors.Wrap(fmt.Sprintf(format, a...), 1).ErrorStack()
