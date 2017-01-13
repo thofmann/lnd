@@ -598,7 +598,7 @@ type chanAnnouncement struct {
 // announcement is two part: the first part authenticates the existence of the
 // channel and contains four signatures binding the funding pub keys and
 // identity pub keys of both parties to the channel, and the second segment is
-// authenticated only by us an contains our directional routing policy for the
+// authenticated only by us and contains our directional routing policy for the
 // channel.
 func newChanAnnouncement(localIdentity *btcec.PublicKey,
 	channel *lnwallet.LightningChannel, chanID lnwire.ChannelID,
