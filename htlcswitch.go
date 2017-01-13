@@ -145,8 +145,8 @@ type htlcSwitch struct {
 	// the RPC system.
 	outgoingPayments chan *htlcPacket
 
-	// htlcPlex is the channel in which all connected links use to
-	// coordinate the setup/tear down of Sphinx (onion routing) payment
+	// htlcPlex is the channel which all connected links use to
+	// coordinate the setup/teardown of Sphinx (onion routing) payment
 	// circuits. Active links forward any add/settle messages over this
 	// channel each state transition, sending new adds/settles which are
 	// fully locked in.
