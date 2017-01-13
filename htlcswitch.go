@@ -446,7 +446,7 @@ out:
 				}
 
 				// Since an outgoing HTLC we sent on the clear
-				// link as he cancelled, we update the
+				// link has been cancelled, we update the
 				// bandwidth of the clear link, restoring the
 				// value of the HTLC worth.
 				n := atomic.AddInt64(&circuit.clear.availableBandwidth,
