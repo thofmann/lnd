@@ -47,7 +47,7 @@ type breachArbiter struct {
 	// be watched.
 	newContracts chan *lnwallet.LightningChannel
 
-	// settledContracts is a channel by outside sub-subsystems to notify
+	// settledContracts is a channel by outside subsystems to notify
 	// the breachArbiter that a channel has peacefully been closed. Once a
 	// channel has been closed the arbiter no longer needs to watch for
 	// breach closes.
