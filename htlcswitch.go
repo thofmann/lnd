@@ -708,7 +708,7 @@ type unregisterLinkMsg struct {
 	done chan struct{}
 }
 
-// UnregisterLink requets the htlcSwitch to register the new active link. An
+// UnregisterLink requests the htlcSwitch to register the new active link. An
 // unregistered link will no longer be considered a candidate to forward
 // HTLCs.
 func (h *htlcSwitch) UnregisterLink(remotePub *btcec.PublicKey, chanPoint *wire.OutPoint) {
