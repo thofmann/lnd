@@ -734,7 +734,7 @@ const (
 	// be attempted.
 	CloseRegular LinkCloseType = iota
 
-	// CloseBreach indicates that a channel breach has been dtected, and
+	// CloseBreach indicates that a channel breach has been detected, and
 	// the link should immediately be marked as unavailable.
 	CloseBreach
 )
