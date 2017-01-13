@@ -312,7 +312,7 @@ Functions should _not_ just be layed out as a bare contiguous block of code.
 
 	// When initially generating the witnessScript, we sorted the serialized
 	// public keys in descending order. So we do a quick comparison in order
-	// ensure the signatures appear on the Script Virtual Machine stack in
+	// to ensure the signatures appear on the Script Virtual Machine stack in
 	// the correct order.
 	if bytes.Compare(pubA, pubB) == -1 {
 		witness[1] = sigB
