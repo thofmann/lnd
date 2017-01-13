@@ -410,7 +410,7 @@ func (f *fundingManager) handleFundingRequest(fmsg *fundingRequestMsg) {
 
 	fndgLog.Infof("Sending fundingResp for pendingID(%v)", msg.ChannelID)
 
-	// With the initiator's contribution recorded, response with our
+	// With the initiator's contribution recorded, respond with our
 	// contribution in the next message of the workflow.
 	ourContribution := reservation.OurContribution()
 	deliveryScript, err := txscript.PayToAddrScript(ourContribution.DeliveryAddress)
