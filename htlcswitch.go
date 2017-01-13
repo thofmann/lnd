@@ -472,7 +472,7 @@ out:
 				continue
 			}
 
-			hswcLog.Infof("Sent %v satoshis, received %v satoshi in "+
+			hswcLog.Infof("Sent %v satoshis, received %v satoshis in "+
 				"the last 10 seconds (%v tx/sec)",
 				satSent.ToUnit(btcutil.AmountSatoshi),
 				satRecv.ToUnit(btcutil.AmountSatoshi),
