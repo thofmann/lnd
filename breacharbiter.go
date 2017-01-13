@@ -477,7 +477,7 @@ func (b *breachArbiter) createJusticeTx(r *retributionInfo) (*wire.MsgTx, error)
 	totalAmt := r.selfOutput.amt + r.revokedOutput.amt
 	sweepedAmt := int64(totalAmt - 5000)
 
-	// With the fee calculate, we can now create the justice transaction
+	// With the fee calculated, we can now create the justice transaction
 	// using the information gathered above.
 	justiceTx := wire.NewMsgTx(2)
 	justiceTx.AddTxOut(&wire.TxOut{
