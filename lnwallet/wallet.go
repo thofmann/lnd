@@ -608,7 +608,7 @@ func (l *LightningWallet) handleFundingReserveRequest(req *initFundingReserveMsg
 
 	// Funding reservation request successfully handled. The funding inputs
 	// will be marked as unavailable until the reservation is either
-	// completed, or canceled.
+	// completed, or cancelled.
 	req.resp <- reservation
 	req.err <- nil
 }
