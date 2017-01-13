@@ -98,7 +98,7 @@ func (i *invoiceRegistry) AddInvoice(invoice *channeldb.Invoice) error {
 	return nil
 }
 
-// lookupInvoice looks up an invoice by it's payment hash (R-Hash), if found
+// lookupInvoice looks up an invoice by its payment hash (R-Hash), if found
 // then we're able to pull the funds pending within an HTLC.
 // TODO(roasbeef): ignore if settled?
 func (i *invoiceRegistry) LookupInvoice(rHash chainhash.Hash) (*channeldb.Invoice, error) {
