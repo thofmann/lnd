@@ -215,7 +215,7 @@ func makeWitnessTestCase(t *testing.T, f func() (wire.TxWitness, error)) func() 
 //
 // The following cases are exercised by this test:
 // sender script:
-//  * reciever spends
+//  * receiver spends
 //    * revoke w/ sig
 //    * HTLC with invalid pre-image size
 //    * HTLC with valid pre-image size + sig
@@ -385,11 +385,11 @@ func TestHTLCSenderSpendValidation(t *testing.T) {
 }
 
 // TestHTLCReceiverSpendValidation tests all possible valid+invalid redemption
-// paths in the script used within the reciever's commitment transaction for an
+// paths in the script used within the receiver's commitment transaction for an
 // incoming HTLC.
 //
 // The following cases are exercised by this test:
-//  * reciever spends
+//  * receiver spends
 //     * HTLC redemption w/ invalid preimage size
 //     * HTLC redemption w/ invalid sequence
 //     * HTLC redemption w/ valid preimage size
@@ -438,15 +438,15 @@ func TestHTLCReceiverSpendValidation(t *testing.T) {
 	// This will be Bob's commitment transaction. In this scenario Alice
 	// is sending an HTLC to a node she has a a path to (could be Bob,
 	// could be multiple hops down, it doesn't really matter).
-	recieverCommitTx := wire.NewMsgTx(2)
-	recieverCommitTx.AddTxIn(fakeFundingTxIn)
-	recieverCommitTx.AddTxOut(&wire.TxOut{
+	receiverCommitTx := wire.NewMsgTx(2)
+	receiverCommitTx.AddTxIn(fakeFundingTxIn)
+	receiverCommitTx.AddTxOut(&wire.TxOut{
 		Value:    int64(paymentAmt),
 		PkScript: htlcWitnessScript,
 	})
 
 	prevOut := &wire.OutPoint{
-		Hash:  recieverCommitTx.TxHash(),
+		Hash:  receiverCommitTx.TxHash(),
 		Index: 0,
 	}
 

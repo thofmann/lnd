@@ -566,7 +566,7 @@ func TestSimpleAddSettleWorkflow(t *testing.T) {
 	}
 
 	// The logs of both sides should now be cleared since the entry adding
-	// the HTLC should have been removed once both sides recieve the
+	// the HTLC should have been removed once both sides receive the
 	// revocation.
 	if aliceChannel.ourUpdateLog.Len() != 0 {
 		t.Fatalf("alice's local not updated, should be empty, has %v entries "+

@@ -807,7 +807,7 @@ func (f *fundingManager) announceChannel(s *server,
 }
 
 // processFundingOpenProof sends a message to the fundingManager allowing it
-// to process the final message recieved when the daemon is on the responding
+// to process the final message received when the daemon is on the responding
 // side of a single funder channel workflow.
 func (f *fundingManager) processFundingOpenProof(msg *lnwire.SingleFundingOpenProof, peer *peer) {
 	f.fundingMsgs <- &fundingOpenMsg{msg, peer}

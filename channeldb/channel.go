@@ -90,7 +90,7 @@ var (
 	fundingTxnKey = []byte("fsk")
 
 	// elkremStateKey stores their current revocation hash, and our elkrem
-	// sender, and their elkrem reciever.
+	// sender, and their elkrem receiver.
 	elkremStateKey = []byte("esk")
 
 	// deliveryScriptsKey stores the scripts for the final delivery in the
