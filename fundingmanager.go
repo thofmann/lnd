@@ -680,7 +680,7 @@ func newChanAnnouncement(localIdentity *btcec.PublicKey,
 // funder workflow. Once this message is processed, the funding transaction is
 // broadcast. Once the funding transaction reaches a sufficient number of
 // confirmations, a message is sent to the responding peer along with a compact
-// encoding of the location of the channel within the block chain.
+// encoding of the location of the channel within the blockchain.
 func (f *fundingManager) handleFundingSignComplete(fmsg *fundingSignCompleteMsg) {
 	chanID := fmsg.msg.ChannelID
 	peerID := fmsg.peer.id
